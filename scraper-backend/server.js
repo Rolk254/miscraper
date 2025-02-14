@@ -20,6 +20,8 @@ app.get("/precio", async (req, res) => {
   if (!url) return res.status(400).json({ error: "URL requerida" });
 
   try {
+    console.log("Iniciando el scraping para la URL:", url);
+    
     // Lanzar Puppeteer con la configuración correcta para Render
     const browser = await puppeteer.launch({
       headless: true,
@@ -37,6 +39,7 @@ app.get("/precio", async (req, res) => {
 
     // Scraping de MediaMarkt
     if (url.includes("mediamarkt")) {
+      console.log("Scraping de MediaMarkt...");
       price =
         $("span[data-test='branded-price-whole-value']").text().trim() +
         $("span[data-test='branded-price-decimal-value']").text().trim() +
@@ -50,6 +53,7 @@ app.get("/precio", async (req, res) => {
     }
     // Scraping de Amazon
     else if (url.includes("amazon")) {
+      console.log("Scraping de Amazon...");
       price =
         $("#priceblock_ourprice").text().trim() ||
         $("#priceblock_dealprice").text().trim() ||
@@ -63,13 +67,13 @@ app.get("/precio", async (req, res) => {
       return res.status(400).json({ error: "URL no compatible" });
     }
 
-    console.log("Scraping:", { price, imageUrl });
+    console.log("Scraping completado:", { price, imageUrl });
 
     await browser.close();
     return res.json({ price: price || "No encontrado", imageUrl, source });
   } catch (error) {
     console.error("Error al obtener el precio:", error);
-    res.status(500).json({ error: "Error en el scraping" });
+    res.status(500).json({ error: `Error en el scraping: ${error.message}` });
   }
 });
 
