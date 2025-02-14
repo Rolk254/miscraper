@@ -1,7 +1,8 @@
 const express = require("express");
 const axios = require("axios");
 const cheerio = require("cheerio");
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-core"); // Usamos puppeteer-core
+const chrome = require("chrome-aws-lambda"); // Usamos chrome-aws-lambda
 const cors = require("cors");
 const { v4: uuidv4 } = require("uuid");
 
@@ -17,7 +18,12 @@ app.get("/precio", async (req, res) => {
   if (!url) return res.status(400).json({ error: "URL requerida" });
 
   try {
-    const browser = await puppeteer.launch({ headless: "new" });
+    // Lanza el navegador usando chrome-aws-lambda
+    const browser = await puppeteer.launch({
+      args: chrome.args, 
+      executablePath: await chrome.executablePath, 
+      headless: chrome.headless, 
+    });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: "domcontentloaded" });
 
