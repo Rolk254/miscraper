@@ -1,7 +1,7 @@
 const express = require("express");
 const axios = require("axios");
 const cheerio = require("cheerio");
-const puppeteer = require("puppeteer-core");
+const puppeteer = require("puppeteer");
 const cors = require("cors");
 const { v4: uuidv4 } = require("uuid");
 
@@ -11,24 +11,13 @@ app.use(express.json());
 
 let products = [];
 
-// Definir el path de Chromium en Render (si es necesario)
-const executablePath = '/usr/bin/chromium-browser'; // Ajusta este path si es necesario
-
 // Ruta para obtener el precio y la imagen
 app.get("/precio", async (req, res) => {
   const { url } = req.query;
   if (!url) return res.status(400).json({ error: "URL requerida" });
 
   try {
-    console.log("Iniciando el scraping para la URL:", url);
-    
-    // Lanzar Puppeteer con la configuración correcta para Render
-    const browser = await puppeteer.launch({
-      headless: true,
-      executablePath, // Usar el path de Chromium disponible en Render
-      args: ['--no-sandbox', '--disable-setuid-sandbox'], // Necesario para entornos de servidor
-    });
-
+    const browser = await puppeteer.launch({ headless: "new" });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: "domcontentloaded" });
 
@@ -37,9 +26,7 @@ app.get("/precio", async (req, res) => {
 
     let price, imageUrl, source;
 
-    // Scraping de MediaMarkt
     if (url.includes("mediamarkt")) {
-      console.log("Scraping de MediaMarkt...");
       price =
         $("span[data-test='branded-price-whole-value']").text().trim() +
         $("span[data-test='branded-price-decimal-value']").text().trim() +
@@ -50,10 +37,7 @@ app.get("/precio", async (req, res) => {
         "https://play-lh.googleusercontent.com/_916PrtBlHNV3zVEYCeAAzBJfpsSgX1Ey0WoAdjX6c_XtOf9cctXafoQPEBdoFOMn2M";
 
       source = "MediaMarkt";
-    }
-    // Scraping de Amazon
-    else if (url.includes("amazon")) {
-      console.log("Scraping de Amazon...");
+    } else if (url.includes("amazon")) {
       price =
         $("#priceblock_ourprice").text().trim() ||
         $("#priceblock_dealprice").text().trim() ||
@@ -67,13 +51,13 @@ app.get("/precio", async (req, res) => {
       return res.status(400).json({ error: "URL no compatible" });
     }
 
-    console.log("Scraping completado:", { price, imageUrl });
+    console.log("Scraping:", { price, imageUrl });
 
     await browser.close();
     return res.json({ price: price || "No encontrado", imageUrl, source });
   } catch (error) {
     console.error("Error al obtener el precio:", error);
-    res.status(500).json({ error: `Error en el scraping: ${error.message}` });
+    res.status(500).json({ error: "Error en el scraping" });
   }
 });
 
