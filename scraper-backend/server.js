@@ -2,7 +2,6 @@ const express = require("express");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const puppeteer = require("puppeteer-core");
-const chrome = require("chrome-aws-lambda");
 const cors = require("cors");
 const { v4: uuidv4 } = require("uuid");
 
@@ -12,30 +11,31 @@ app.use(express.json());
 
 let products = [];
 
+// Definir el path de Chromium en Render (si es necesario)
+const executablePath = '/usr/bin/chromium-browser'; // Ajusta este path si es necesario
+
 // Ruta para obtener el precio y la imagen
 app.get("/precio", async (req, res) => {
   const { url } = req.query;
   if (!url) return res.status(400).json({ error: "URL requerida" });
 
   try {
-    // Lanzamos el navegador en modo headless
+    // Lanzar Puppeteer con la configuración correcta para Render
     const browser = await puppeteer.launch({
-      args: chrome.args,
-      executablePath: await chrome.executablePath,
-      headless: chrome.headless,
+      headless: true,
+      executablePath, // Usar el path de Chromium disponible en Render
+      args: ['--no-sandbox', '--disable-setuid-sandbox'], // Necesario para entornos de servidor
     });
+
     const page = await browser.newPage();
-    await page.goto(url, { waitUntil: "load" });
+    await page.goto(url, { waitUntil: "domcontentloaded" });
 
-    // Obtener el contenido de la página
     const content = await page.content();
-    console.log("Contenido HTML de la página:", content); // Imprimir el contenido HTML
-
     const $ = cheerio.load(content);
 
     let price, imageUrl, source;
 
-    // Scraping para MediaMarkt
+    // Scraping de MediaMarkt
     if (url.includes("mediamarkt")) {
       price =
         $("span[data-test='branded-price-whole-value']").text().trim() +
@@ -48,7 +48,7 @@ app.get("/precio", async (req, res) => {
 
       source = "MediaMarkt";
     }
-    // Scraping para Amazon
+    // Scraping de Amazon
     else if (url.includes("amazon")) {
       price =
         $("#priceblock_ourprice").text().trim() ||
@@ -58,7 +58,6 @@ app.get("/precio", async (req, res) => {
       imageUrl =
         $("#landingImage").attr("src") ||
         "https://play-lh.googleusercontent.com/_916PrtBlHNV3zVEYCeAAzBJfpsSgX1Ey0WoAdjX6c_XtOf9cctXafoQPEBdoFOMn2M";
-
       source = "Amazon";
     } else {
       return res.status(400).json({ error: "URL no compatible" });
@@ -66,13 +65,11 @@ app.get("/precio", async (req, res) => {
 
     console.log("Scraping:", { price, imageUrl });
 
-    // Cerramos el navegador
     await browser.close();
-
     return res.json({ price: price || "No encontrado", imageUrl, source });
   } catch (error) {
-    console.error("Error al obtener el precio:", error.message || error);
-    res.status(500).json({ error: error.message || "Error en el scraping" });
+    console.error("Error al obtener el precio:", error);
+    res.status(500).json({ error: "Error en el scraping" });
   }
 });
 
