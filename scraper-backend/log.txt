@@ -1,0 +1,72 @@
+[2025-02-17T07:52:02.129Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T07:52:24.656Z] Producto añadido: monitor 180hz, Fuente: MediaMarkt, Precio: 129,–€
+[2025-02-17T08:20:18.052Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T08:27:14.470Z] Producto añadido: raton, Fuente: MediaMarkt, Precio: 199,–€
+[2025-02-17T08:28:00.205Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T08:32:31.640Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T08:34:13.619Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T08:35:12.813Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T08:39:24.375Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T08:44:32.884Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T08:45:00.591Z] Producto añadido: test, Fuente: MediaMarkt, Precio: 199,–€
+[2025-02-17T08:45:04.541Z] Producto eliminado: ID 4
+[2025-02-17T08:45:07.102Z] Producto eliminado: ID 10
+[2025-02-17T08:45:08.814Z] Producto eliminado: ID 9
+[2025-02-17T08:45:10.901Z] Producto eliminado: ID 8
+[2025-02-17T08:45:12.907Z] Producto eliminado: ID 6
+[2025-02-17T08:56:00.665Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T08:56:06.100Z] Producto añadido: test, Fuente: MediaMarkt, Precio: 199,–€
+[2025-02-17T08:57:47.341Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:00:52.671Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:02:27.330Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:03:31.889Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:04:06.099Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:04:08.721Z] Producto añadido: raton, Fuente: PCComponentes, Precio: 10
+[2025-02-17T09:20:08.919Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:23:21.398Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:25:14.659Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:26:36.135Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:29:48.993Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:29:52.540Z] Producto añadido: raton, Fuente: PCComponentes, Precio: 10
+[2025-02-17T09:30:17.175Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:31:32.504Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:31:35.709Z] Producto añadido: raton, Fuente: PCComponentes, Precio: 10
+[2025-02-17T09:34:40.775Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:34:44.157Z] Producto añadido: raton, Fuente: PCComponentes, Precio: No encontrado
+[2025-02-17T09:36:19.552Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:36:48.090Z] Producto eliminado: ID 15
+[2025-02-17T09:36:50.213Z] Producto eliminado: ID 14
+[2025-02-17T09:36:51.818Z] Producto eliminado: ID 13
+[2025-02-17T09:36:53.450Z] Producto eliminado: ID 12
+[2025-02-17T09:41:34.993Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:41:45.671Z] Producto añadido: test, Fuente: PCComponentes, Precio: No encontrado
+[2025-02-17T09:44:37.317Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:44:40.992Z] Producto añadido: test, Fuente: PCComponentes, Precio: No encontrado
+[2025-02-17T09:47:22.146Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:47:25.044Z] Producto añadido: test, Fuente: PCComponentes, Precio: €
+[2025-02-17T09:50:45.522Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:50:50.124Z] Producto añadido: test, Fuente: PCComponentes, Precio: No encontrado
+[2025-02-17T09:50:53.702Z] Producto eliminado: ID 19
+[2025-02-17T09:50:55.799Z] Producto eliminado: ID 18
+[2025-02-17T09:50:57.556Z] Producto eliminado: ID 17
+[2025-02-17T09:50:59.308Z] Producto eliminado: ID 16
+[2025-02-17T09:51:20.026Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:54:30.046Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T09:54:36.147Z] Producto añadido: test, Fuente: PCComponentes, Precio: No encontrado
+[2025-02-17T11:21:25.231Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T11:25:13.295Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T11:42:15.657Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-17T11:42:45.969Z] Producto eliminado: ID 20
+[2025-02-17T11:48:43.256Z] Producto eliminado: ID 11
+[2025-02-17T11:52:38.293Z] Producto añadido: test, Fuente: Amazon, Precio: 181,00€
+[2025-02-17T11:54:30.062Z] Producto añadido: monitor, Fuente: MediaMarkt, Precio: 199,–€
+[2025-02-17T12:46:35.774Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-18T08:22:43.659Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-18T08:25:45.882Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-18T08:54:53.716Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-18T09:19:42.017Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-18T09:24:41.466Z] Producto añadido: prueba, Fuente: Amazon, Precio: 40,63€
+[2025-02-18T09:25:04.860Z] Producto añadido: prueba, Fuente: MediaMarkt, Precio: 599,–€
+[2025-02-18T09:26:55.911Z] Producto añadido: Prueba, Fuente: MediaMarkt, Precio: 599,–€
+[2025-02-18T09:33:05.322Z] Producto eliminado: ID 25
+[2025-02-18T09:33:08.353Z] Producto eliminado: ID 24
