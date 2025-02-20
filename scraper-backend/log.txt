@@ -71,3 +71,16 @@
 [2025-02-18T09:33:05.322Z] Producto eliminado: ID 25
 [2025-02-18T09:33:08.353Z] Producto eliminado: ID 24
 [2025-02-18T11:14:28.232Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-19T10:19:19.190Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-19T10:27:18.637Z] Producto eliminado: ID 23
+[2025-02-19T10:55:14.788Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-19T12:49:09.819Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-20T09:59:51.581Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-20T14:07:46.600Z] Servidor iniciado en http://0.0.0.0:3000
+[2025-02-20T14:18:20.810Z] Producto eliminado: ID 22
+[2025-02-20T14:20:22.298Z] Producto eliminado: ID 21
+[2025-02-20T14:21:26.637Z] Producto añadido: mochila, Fuente: Amazon, Precio: 26,33€
+[2025-02-20T14:21:26.661Z] Producto añadido: mochila, Fuente: Amazon, Precio: 26,33€
+[2025-02-20T14:22:22.027Z] Producto eliminado: ID 27
+[2025-02-20T15:03:22.512Z] Producto añadido: iphone, Fuente: MediaMarkt, Precio: 429,–€
+[2025-02-20T15:52:27.146Z] Servidor iniciado en http://0.0.0.0:3000

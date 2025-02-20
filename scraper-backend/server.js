@@ -55,24 +55,25 @@ const verifyToken = (req, res, next) => {
 
 // Login
 app.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-  try {
-      const connection = await connectDB();
-      const [rows] = await connection.execute("SELECT * FROM users WHERE email = ?", [email]);
-
-      if (rows.length === 0 || rows[0].password !== password) {
-          return res.status(400).json({ error: "Credenciales incorrectas" });
-      }
-
-      // Crear un token JWT
-      const token = jwt.sign({ userId: rows[0].id }, JWT_SECRET, { expiresIn: '1h' });
-
-      res.json({ message: "Login exitoso", token });
-  } catch (error) {
-      console.error("Error en login:", error);
-      res.status(500).json({ error: "Error al iniciar sesión" });
-  }
-});
+    const { email, password } = req.body;
+    try {
+        const connection = await connectDB();
+        const [rows] = await connection.execute("SELECT * FROM users WHERE email = ?", [email]);
+  
+        if (rows.length === 0 || rows[0].password !== password) {
+            return res.status(400).json({ error: "Credenciales incorrectas" });
+        }
+  
+        // Crear un token JWT
+        const token = jwt.sign({ userId: rows[0].id, username: rows[0].name }, JWT_SECRET, { expiresIn: '1h' });
+  
+        // Enviar la respuesta con el token y el nombre de usuario
+        res.json({ message: "Login exitoso", token, username: rows[0].name });
+    } catch (error) {
+        console.error("Error en login:", error);
+        res.status(500).json({ error: "Error al iniciar sesión" });
+    }
+}); 
 
 // Registro
 app.post("/register", async (req, res) => {
