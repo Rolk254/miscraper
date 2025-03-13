@@ -236,8 +236,7 @@ Si tienes alguna duda o sugerencia, puedes abrir un **issue** en el repositorio.
 
 Únete a la conversación y mantente al tanto de las actualizaciones:
 
-- Twitter: [@mi_usuario](https://twitter.com/mi_usuario)
-- Discord: [Enlace al servidor Discord](https://discord.gg/mi_servidor)
+- Twitter: [@lucasga53833277]([https://twitter.com/mi_usuario](https://x.com/lucasga53833277))
 - Slack: [Enlace a Slack](https://slack.com/mi_enlace)
   
 ## 📌 Licencia
