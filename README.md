@@ -1,63 +1,78 @@
 # API de Scraping de Productos
 
-Esta API permite realizar el scraping de precios y obtener información de productos de varias tiendas en línea como Amazon, MediaMarkt y PCComponentes. Además, tiene funcionalidades de autenticación (JWT), registro de usuarios, y gestión de productos en una base de datos MySQL.
+![Node.js](https://img.shields.io/badge/Node.js-v14+-green)
+![MySQL](https://img.shields.io/badge/MySQL-v8+-orange)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
-## Funcionalidades
+Esta **API de Scraping** permite realizar el scraping de precios y obtener información de productos de tiendas en línea como **Amazon**, **MediaMarkt**, y **PCComponentes**. También incluye **funcionalidades de autenticación (JWT)**, **registro de usuarios**, y **gestión de productos** en una base de datos **MySQL**.
 
-- **Autenticación JWT**: Seguridad en los endpoints mediante tokens.
-- **Registro de usuarios**: Crea nuevos usuarios y realiza el login con credenciales.
-- **Gestión de productos**: CRUD de productos almacenados en la base de datos.
-- **Scraping de productos**: Obtén precios y detalles de productos desde tiendas como Amazon y PCComponentes.
-  
-## Requisitos
+## 🚀 Características
 
-### Software necesario:
+- **Autenticación JWT** para seguridad y protección de endpoints.
+- **Registro de Usuarios** y manejo de contraseñas de manera eficiente.
+- **Scraping de productos** desde páginas de comercio electrónico (Amazon, MediaMarkt, PCComponentes).
+- **Gestión de productos**: CRUD completo para productos (crear, leer, actualizar, eliminar).
+- **Caching** de los resultados del scraping para mejorar el rendimiento.
+- **Logs detallados** de cada acción importante en el servidor.
+- **Pruebas automáticas** (si implementas una suite de tests).
+
+## 📦 Requisitos
+
 - **Node.js** (v14 o superior) - [Descargar Node.js](https://nodejs.org/)
 - **MySQL** - [Descargar MySQL](https://dev.mysql.com/downloads/)
 
-### Dependencias de Node.js:
-La aplicación usa las siguientes dependencias para la creación de la API, manejo de la base de datos y el scraping:
-- `express`: Framework para crear la API.
-- `axios`: Para realizar solicitudes HTTP.
-- `cheerio`: Para hacer scraping del contenido HTML.
-- `puppeteer`: Para realizar el scraping en páginas web de manera controlada.
-- `cors`: Middleware para permitir solicitudes de otros dominios.
-- `mysql2/promise`: Cliente para interactuar con la base de datos MySQL utilizando promesas.
-- `jsonwebtoken`: Para generar y verificar los tokens JWT.
-- `bcryptjs`: Para gestionar contraseñas (aunque en este código no está siendo utilizado para hashear contraseñas).
-- `node-cache`: Para almacenar en caché los resultados de scraping.
+### Dependencias
 
-## Instalación
+La aplicación usa las siguientes dependencias para la creación de la API y la interacción con la base de datos:
 
-Sigue los pasos a continuación para instalar y ejecutar la API en tu máquina local.
+- `express`
+- `axios`
+- `cheerio`
+- `puppeteer`
+- `cors`
+- `mysql2/promise`
+- `jsonwebtoken`
+- `bcryptjs`
+- `node-cache`
 
-### 1. Clonar el repositorio
+## 🛠 Instalación
+
+### Clonar el repositorio
 
 ```bash
 git clone https://github.com/tu_usuario/tu_repositorio.git
 ```
 
-### 2. Acceder al directorio del proyecto
+### Acceder al directorio
 
 ```bash
 cd tu_repositorio
 ```
 
-### 3. Instalar las dependencias
-
-Asegúrate de tener `npm` o `yarn` instalado para poder gestionar las dependencias. Luego ejecuta:
+### Instalar las dependencias
 
 ```bash
 npm install
 ```
 
-### 4. Configurar la base de datos
+### Configuración de la base de datos
 
-Asegúrate de tener una base de datos MySQL configurada. Crea las tablas necesarias para almacenar usuarios y productos. Si necesitas ayuda, puedes encontrar la [documentación oficial de MySQL](https://dev.mysql.com/doc/).
+Asegúrate de tener **MySQL** configurado y crea las tablas necesarias. Aquí hay un ejemplo de cómo debería verse tu tabla de productos:
 
-### 5. Configuración de variables de entorno
+```sql
+CREATE TABLE productos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255),
+  price DECIMAL(10, 2),
+  source VARCHAR(100),
+  imageUrl VARCHAR(255),
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
 
-Crea un archivo `.env` en la raíz del proyecto y añade las credenciales de tu base de datos. Ejemplo de archivo `.env`:
+### Configurar las variables de entorno
+
+Crea un archivo `.env` en la raíz de tu proyecto con las siguientes variables:
 
 ```bash
 DB_HOST=localhost
@@ -67,21 +82,18 @@ DB_NAME=miScraper
 JWT_SECRET=mi_secreto
 ```
 
-### 6. Iniciar el servidor
-
-Una vez configurado todo, puedes iniciar el servidor con:
+### Iniciar el servidor
 
 ```bash
 npm start
 ```
 
-El servidor estará corriendo en `http://0.0.0.0:3000`.
+El servidor estará disponible en `http://localhost:3000`.
 
-## Endpoints
+## ⚙️ Endpoints
 
-A continuación, se describen los principales endpoints de la API, sus parámetros y las respuestas esperadas.
+### **/login (POST)**
 
-### /login (POST)
 Inicia sesión de un usuario. Recibe un correo electrónico y una contraseña.
 
 **Request Body:**
@@ -101,7 +113,8 @@ Inicia sesión de un usuario. Recibe un correo electrónico y una contraseña.
 }
 ```
 
-### /register (POST)
+### **/register (POST)**
+
 Registra un nuevo usuario. Recibe un nombre, correo electrónico y contraseña.
 
 **Request Body:**
@@ -120,7 +133,8 @@ Registra un nuevo usuario. Recibe un nombre, correo electrónico y contraseña.
 }
 ```
 
-### /products (GET)
+### **/products (GET)**
+
 Obtiene todos los productos de la base de datos.
 
 **Respuesta:**
@@ -137,8 +151,9 @@ Obtiene todos los productos de la base de datos.
 ]
 ```
 
-### /add-product (POST) (Autenticado)
-Añade un nuevo producto a la base de datos. Requiere autenticación con JWT.
+### **/add-product (POST)** (Autenticado)
+
+Añade un nuevo producto. Requiere autenticación con JWT.
 
 **Request Body:**
 ```json
@@ -159,7 +174,8 @@ Añade un nuevo producto a la base de datos. Requiere autenticación con JWT.
 }
 ```
 
-### /delete-product/:id (DELETE) (Autenticado)
+### **/delete-product/:id (DELETE)** (Autenticado)
+
 Elimina un producto de la base de datos. Requiere autenticación con JWT.
 
 **Respuesta:**
@@ -169,7 +185,8 @@ Elimina un producto de la base de datos. Requiere autenticación con JWT.
 }
 ```
 
-### /precio (GET)
+### **/precio (GET)**
+
 Realiza scraping para obtener el precio y la imagen de un producto desde una URL dada. El resultado se almacena en caché por 30 minutos.
 
 **Request Query Parameters:**
@@ -184,7 +201,7 @@ Realiza scraping para obtener el precio y la imagen de un producto desde una URL
 }
 ```
 
-## Seguridad
+## 🔐 Seguridad
 
 La API utiliza **JSON Web Tokens (JWT)** para la autenticación de usuarios. Después de hacer login, se genera un token que debe ser enviado en las cabeceras de las solicitudes autenticadas.
 
@@ -193,49 +210,43 @@ La API utiliza **JSON Web Tokens (JWT)** para la autenticación de usuarios. Des
 Authorization: Bearer JWT_TOKEN
 ```
 
-## Logs
+## 📄 Logs
 
-El servidor genera un archivo `log.txt` donde se registran eventos importantes, como la adición y eliminación de productos, y el inicio del servidor.
+Los eventos importantes, como la adición y eliminación de productos y el inicio del servidor, se registran en un archivo `log.txt`.
 
-## Estructura del Proyecto
+## 📊 Ejemplo de uso con **Postman**
 
-El proyecto está compuesto por los siguientes archivos principales:
+Puedes importar fácilmente el **Postman Collection** con todos los endpoints configurados. [Haz clic aquí para importar la colección de Postman](https://www.postman.com/).
 
-- `app.js`: El archivo principal que maneja la configuración de la API.
-- `log.txt`: Un archivo de log donde se registran eventos importantes del servidor.
-- `package.json`: Archivo que contiene las dependencias y scripts del proyecto.
-
-## Descripción del Código
-
-### Dependencias:
-- **express**: Framework para crear la API.
-- **axios**: Para realizar solicitudes HTTP.
-- **cheerio**: Para hacer parsing del contenido HTML y extraer datos.
-- **puppeteer**: Para realizar el scraping de productos de forma controlada.
-- **cors**: Middleware para habilitar solicitudes desde diferentes dominios.
-- **mysql2/promise**: Cliente para interactuar con la base de datos MySQL utilizando promesas.
-- **fs**: Para trabajar con el sistema de archivos, incluyendo el archivo de logs.
-- **jsonwebtoken**: Para la generación y verificación de tokens JWT.
-- **bcryptjs**: Para la gestión de contraseñas (aunque en este código no está siendo utilizado para hashear contraseñas).
-- **node-cache**: Para almacenar en caché los resultados del scraping de productos.
-
-### Configuración de la Base de Datos:
-Se configura la conexión con MySQL utilizando `mysql2/promise`. Asegúrate de tener las credenciales correctas en el archivo `.env`.
-
-### Autenticación:
-Los endpoints que requieren autenticación usan JWT para verificar que el usuario esté autenticado antes de realizar ciertas operaciones, como añadir o eliminar productos.
-
-### Funciones de Scraping:
-El scraping se realiza mediante `puppeteer`, que abre un navegador controlado y extrae información de la página como el precio, la imagen y la fuente del producto.
-
-## Recursos Adicionales
+## 🌐 Recursos Adicionales
 
 - [Documentación de Express](https://expressjs.com/)
 - [Documentación de Puppeteer](https://pptr.dev/)
 - [Documentación de MySQL](https://dev.mysql.com/doc/)
 - [Documentación de JWT](https://jwt.io/)
+- [Postman](https://www.postman.com/) - Prueba tus endpoints con esta poderosa herramienta.
+  
+## 📝 Contribuir
 
-## Contribución
+Si deseas contribuir al proyecto, por favor abre un **pull request**. 
 
-Si deseas contribuir a este proyecto, por favor abre un **pull request** con tus cambios.
+Si tienes alguna duda o sugerencia, puedes abrir un **issue** en el repositorio.
+
+## 👥 Comunidad
+
+Únete a la conversación y mantente al tanto de las actualizaciones:
+
+- Twitter: [@mi_usuario](https://twitter.com/mi_usuario)
+- Discord: [Enlace al servidor Discord](https://discord.gg/mi_servidor)
+- Slack: [Enlace a Slack](https://slack.com/mi_enlace)
+  
+## 📌 Licencia
+
+Este proyecto está licenciado bajo la **MIT License**. Consulta el archivo `LICENSE` para más detalles.
+
+## 📸 Captura de Pantalla
+
+Aquí tienes una visualización de cómo luce la API en acción.
+
+![Screenshot](https://via.placeholder.com/600x400?text=API+Scraping+en+Acci%C3%B3n)
 
