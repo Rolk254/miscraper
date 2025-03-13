@@ -25,34 +25,37 @@ Esta API permite realizar el scraping de precios y obtener información de produ
 
    ```bash
    git clone https://github.com/tu_usuario/tu_repositorio.git
-# Guía de instalación y uso del proyecto
+   ```
 
-## Accede al directorio del proyecto:
-```bash
-cd tu_repositorio
-```
+2. Accede al directorio del proyecto:
 
-## Instala las dependencias:
-```bash
-npm install
-```
+   ```bash
+   cd tu_repositorio
+   ```
 
-## Configura la base de datos. 
-Asegúrate de tener una base de datos MySQL configurada con las tablas adecuadas para usuarios y productos.
+3. Instala las dependencias:
 
-### Crea un archivo `.env` en la raíz del proyecto y añade tus credenciales de base de datos:
-```bash
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=tu_contraseña
-DB_NAME=miScraper
-JWT_SECRET=mi_secreto
-```
+   ```bash
+   npm install
+   ```
 
-## Inicia el servidor:
-```bash
-npm start
-```
+4. Configura la base de datos. Asegúrate de tener una base de datos MySQL configurada con las tablas adecuadas para usuarios y productos.
+
+   ### Crea un archivo `.env` en la raíz del proyecto y añade tus credenciales de base de datos:
+   ```bash
+   DB_HOST=localhost
+   DB_USER=root
+   DB_PASSWORD=tu_contraseña
+   DB_NAME=miScraper
+   JWT_SECRET=mi_secreto
+   ```
+
+5. Inicia el servidor:
+
+   ```bash
+   npm start
+   ```
+
 El servidor estará corriendo en `http://0.0.0.0:3000`.
 
 ## Endpoints
@@ -200,4 +203,3 @@ Los endpoints que requieren autenticación usan JWT para verificar que el usuari
 
 ### Funciones de Scraping:
 El scraping se realiza mediante `puppeteer`, que abre un navegador controlado y extrae información de la página como el precio, la imagen y la fuente del producto.
-
