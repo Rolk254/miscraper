@@ -249,3 +249,4 @@ Aquí tienes una visualización de cómo luce la API en acción.
 
 ![Screenshot](https://i.imgur.com/9JhN6Iz.png)
 
+
