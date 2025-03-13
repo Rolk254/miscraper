@@ -247,5 +247,5 @@ Este proyecto está licenciado bajo la **MIT License**. Consulta el archivo `LIC
 
 Aquí tienes una visualización de cómo luce la API en acción.
 
-![Screenshot](https://via.placeholder.com/600x400?text=API+Scraping+en+Acci%C3%B3n)
+![Screenshot](https://i.imgur.com/9JhN6Iz.png)
 
